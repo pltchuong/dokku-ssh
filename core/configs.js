@@ -27,12 +27,14 @@ Configs.prototype.get = function(config) {
   return this.ssh.exec(`dokku config:get "${this.name}" "${config || ''}"`);
 };
 
-Configs.prototype.set = function(configs) {
-  return this.ssh.exec(`dokku config:set "${this.name}" "${configs || ''}"`);
+Configs.prototype.set = function(configs, restart) {
+  restart = restart === false ? '--no-restart' : '';
+  return this.ssh.exec(`dokku config:set ${restart} "${this.name}" ${configs || ''}`);
 };
 
-Configs.prototype.unset = function(configs) {
-  return this.ssh.exec(`dokku config:unset "${this.name}" "${configs || ''}"`);
+Configs.prototype.unset = function(configs, restart) {
+  restart = restart === false ? '--no-restart' : '';
+  return this.ssh.exec(`dokku config:unset ${restart} "${this.name}" ${configs || ''}`);
 };
 
 module.exports = Configs;

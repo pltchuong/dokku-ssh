@@ -4,6 +4,6 @@
   "main": "./dokku.js",
   "dependencies": {
     "co": "^4.6.0",
-    "co-child-process": "0.0.3"
+    "co-ssh": "meongx/co-ssh"
   }
 }
